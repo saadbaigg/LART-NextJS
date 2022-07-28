@@ -1,0 +1,111 @@
+@import "../variables";
+@import "../mixins";
+
+.container {
+    padding: 1rem 1.5rem;
+    font-size: 20px;
+    height: $header-height;
+    z-index: 10;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    a {
+        padding: 1rem 1.5rem;
+        border-radius: $radius;
+        transition: 0.3s ease-out;
+        &:hover {
+            background-color: $highlight;
+        }
+    }
+
+    .login {
+        @extend a;
+        background-color: $main;
+        color: $white;
+        font-weight: bold;
+        &:hover {
+            background-color: darken($main, 10);
+        }
+    }
+}
+
+.navLeft {
+    display: flex;
+    gap: 1rem;
+}
+
+// The hamburger button isn't put in a separate module because it only appears here
+.hamburger {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    height: 3rem;
+    width: 4rem;
+
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    z-index: 999;
+    visibility: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    div {
+        background-color: black;
+        border: 2.5px solid black;
+        border-radius: 4px;
+        width: 100%;
+        transition: 0.3s ease-out;
+    }
+}
+
+@include mobile() {
+    .container {
+        padding: 0;
+        height: calc($header-height / 2);
+    }
+
+    .nav {
+        position: fixed;
+        background-color: white;
+        flex-direction: column;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+        transition: 0.3s ease-out;
+        z-index: 10;
+
+        right: -100%;
+    }
+
+    .show {
+        right: 0;
+    }
+
+    .navLeft {
+        flex-direction: column;
+    }
+
+    .hamburger {
+        visibility: visible;
+    }
+    .active {
+        div {
+
+            &:first-child {
+                transform: rotate(45deg) translate(0.4rem, 1.3rem);
+            }
+
+            transform: scaleX(0);
+
+            &:last-child {
+                transform: rotate(-45deg) translate(0.4rem, -1.3rem);
+            }
+        }
+    }
+}

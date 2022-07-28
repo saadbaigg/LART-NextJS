@@ -1,0 +1,45 @@
+@import "../variables";
+@import "../mixins";
+
+.container {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
+    padding: 0rem 5rem 2rem 5rem;
+
+    h1 {
+        font-size: 3rem;
+        margin-block: 0;
+    }
+
+    section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        h2 {
+            font-size: 2rem;
+            margin-block-start: 0;
+            margin-block-end: 1rem;
+        }
+
+        @include mobile() {
+            flex-direction: column;
+        }
+    }
+}
+
+.imageWrapper {
+    border-radius: $radius;
+    overflow: hidden;
+    position: relative;
+    width: 24rem;
+    height: 14rem;
+}
+
+.descriptionWrapper {
+    width: clamp(24rem, 90%, 40rem);
+}

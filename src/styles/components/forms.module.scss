@@ -1,0 +1,18 @@
+// The point of this module is define form-specific layout rules
+@import "../mixins";
+
+
+.addContentForm {
+    div {
+        display: flex;
+        gap: 1rem;
+
+        @include mobile() {
+            flex-direction: column;
+        }
+
+        input {
+            flex-grow: 1;
+        }
+    }
+}

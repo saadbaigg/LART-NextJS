@@ -1,0 +1,22 @@
+@import "../variables";
+@import "../mixins";
+
+.container {
+    @include fsContainer();
+    h1 {
+        font-size: 3rem;
+        margin-block-start: 0;
+    }
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    @include mobile() {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    gap: 5rem;
+}
+
+.imageWrapper {
+    position: relative;
+    height: 50vw;
+}

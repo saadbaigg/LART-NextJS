@@ -1,0 +1,83 @@
+@import "../mixins";
+@import "../variables";
+
+.container {
+    height: calc(100vh - $header-height);
+    display: flex;
+    border-top: 1px solid black;
+
+    .active {
+        left: 0;
+    }
+    nav {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: white;
+        min-width: 20rem;
+
+        @include laptop() {
+            min-width: 24rem;
+        }
+
+        border-right: 1px solid black;
+        
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        button {
+            padding: 2rem;
+            font-size: 1.2rem;
+            background-color: transparent;
+
+            border: none;
+            border-bottom: 1px solid black;
+
+            transition: 0.3s ease-out;
+
+            &:hover {
+                background-color: $highlight;
+                cursor: pointer;
+            }
+        }
+
+        .hideButton {
+            visibility: collapse;
+            position: absolute;
+        }
+
+        .logoutButton {
+            border-bottom: none;
+            border-top: 1px solid black;
+            color: #C44;
+        }
+    }
+
+    @include maxTablet() {
+        nav {
+            position: fixed;
+            width: 100%;
+            left: -100%;
+            z-index: 5;
+            transition: 0.3s ease-out;
+
+            .hideButton {
+                position: relative;
+                visibility: visible;
+            }
+        }
+    }
+
+    .right {
+        flex-grow: 1;
+        padding: 0 4rem;
+        overflow-y: scroll;
+
+        @include laptop() {
+            padding: 0 8rem;
+        }
+    }
+}

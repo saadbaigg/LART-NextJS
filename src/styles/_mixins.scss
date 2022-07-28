@@ -1,0 +1,48 @@
+@mixin button() {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin fsContainer() {
+    height: calc(100vh - $header-height);
+    padding: 1rem 5rem;
+}
+
+@mixin hidden() {
+    width: 0;
+    height: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: -9999;
+}
+
+@mixin mobile() {
+    @media screen and (max-width: 540px) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    @media screen and (min-width: 720px) {
+        @content;
+    }
+}
+
+@mixin maxTablet() {
+    @media screen and (max-width: 720px) {
+        @content;
+    }
+}
+
+@mixin laptop() {
+    @media screen and (min-width: 1080px) {
+        @content;
+    }
+}
+
+@mixin desktop() {
+    @media screen and (min-width: 1440px) {
+        @content;
+    }
+}

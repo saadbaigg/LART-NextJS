@@ -1,0 +1,133 @@
+@import "../variables";
+@import "../mixins";
+
+.hero {
+    display: flex;
+    height: calc(90vh - $header-height);
+    width: 100vw;
+    overflow-x: hidden;
+
+    .left {
+        width: max(16rem, 35vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+
+        button {
+            @include button;
+            width: 12rem;
+            height: 4rem;
+            border-radius: $radius;
+            background-color: white;
+            font-size: 1.25rem;
+            
+            transition: 0.3s ease-out;
+            &:hover {
+                background-color: $highlight;
+            }       
+        }   
+        
+        .hideButton {
+            visibility: collapse;
+            position: absolute;
+        } 
+    }
+
+    .showButton {
+        position: absolute;
+        left: -2.5rem;
+        top: 40vh;
+        transform: rotate(-45deg);
+        border-bottom-right-radius: $radius;
+        
+        background-color: white;
+        width: 5rem;
+        height: 5rem;
+        padding: 1rem;
+        border: none;
+        z-index: 10;
+
+        visibility: hidden;
+
+        div {
+            border-bottom-right-radius: $radius;
+            border-bottom: 3px solid black;
+            border-right: 3px solid black;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .right {
+        border-radius: $radius 0 0 $radius;
+        overflow: hidden;
+        flex-grow: 1;
+    }
+}
+
+@include mobile() {
+    .hero {
+
+        .left {
+            max-width: 0;
+            position: relative;
+            left: min(-16rem, -35vw);
+            transition: 0.3s ease-out;
+
+            .hideButton {
+                position: relative;
+                border: none;
+                font-weight: bold;
+                visibility: visible;
+            }
+        }
+        .show {
+            max-width: 16rem;
+            left: 0;
+        }
+
+        .showButton {
+            visibility: visible;
+        }
+    }
+}
+
+.description {
+    padding-bottom: 2rem;
+
+    .name {
+        background-color: $highlight;
+        text-align: center;
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+
+    .dob {
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .story {
+        margin-top: 1rem;
+        padding: 0 10rem;
+        @include mobile() {
+            padding: 0 2rem;
+        }
+        text-align: justify;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        p {
+            width: clamp(10vw, 20rem, 90vw);
+            margin-block: 0;
+        }
+    }
+}

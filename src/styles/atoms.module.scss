@@ -1,0 +1,92 @@
+@import "variables";
+@import "mixins";
+
+.button {
+    padding: 1rem 1.5rem;
+    border-radius: $radius;
+    border: none;
+    font-weight: bold;
+
+    background-color: $main;
+    color: $white;
+
+    transition: 0.3s ease-out;
+
+    &:hover {
+        background-color: darken($main, 10);
+        cursor: pointer;
+    }
+}
+
+@mixin formInput() {
+    padding: 0.75rem 1rem;
+    background-color: white;
+    min-width: 5rem;
+
+    font-size: 1.15rem;
+
+    border-radius: $radius;
+    border: 1.5px solid black;
+}
+
+.input {
+    @include formInput();
+}
+
+.label {
+    margin-bottom: -0.75rem;
+}
+
+.textarea {
+    @include formInput();
+    resize: vertical;
+    box-sizing: border-box;
+    width: 100% !important; 
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sidebarButton {
+    position: absolute;
+    left: -2.5rem;
+    top: 40vh;
+    transform: rotate(-45deg);
+    border-bottom-right-radius: $radius;
+    
+    background-color: white;
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem;
+    border: none;
+    z-index: 10;
+    cursor: pointer;
+
+    visibility: hidden;
+
+    div {
+        border-bottom-right-radius: $radius;
+        border-bottom: 3px solid black;
+        border-right: 3px solid black;
+        width: 100%;
+        height: 100%;
+    }
+
+    @include mobile() {
+        visibility: visible;
+    }
+}
+
+.tabletSidebarButton {
+    @extend .sidebarButton;
+    @include mobile() {
+        visibility: hidden;
+    }
+    @include maxTablet() {
+        visibility: visible;
+    }
+}
