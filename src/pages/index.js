@@ -91,7 +91,20 @@ export default function Home({ data }) {
         </div>
       </section>
 
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        {/* IN-MEMORY section ------- */}
+        <div className={styles.mainWrapper}>
+          <div className={styles.card}>
+            <img src={data[index].image} alt={data[index].alt} />
+
+            <div className={styles.textContainer}>
+              <h3>{data[index].name}</h3>
+              <p className={styles.dob}>Date of Birth: {data[index].dob}</p>
+              <p className={styles.story}>{data[index].story}</p>
+            </div>
+          </div>
+        </div>
+      </main>
 
       {/* <section className={styles.hero}>
         <div className={`${styles.left} ${active ? styles.show : ''}`}>
