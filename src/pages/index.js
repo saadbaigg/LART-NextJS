@@ -1,20 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
-import Carousel from "../components/Carousel";
-import useSidebar from "../hooks/useSidebar";
-import SidebarButton from "../components/SidebarButton";
-
 import styles from "../styles/pages/Home.module.scss";
 
 export default function Home({ data }) {
-  const [active, toggleSidebar] = useSidebar(true);
-
   // stages for the categories/types
   const [stage, setStage] = useState(0);
 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    console.log(index, data.length);
+    // console.log(index, data.length);
     const timer = setTimeout(() => {
       setIndex((current) => (current == data.length - 1 ? 0 : current + 1));
     }, 5000);
@@ -57,6 +51,7 @@ export default function Home({ data }) {
       <section className={styles.hero}>
         <h1>Some Heading</h1>
 
+        {/* categories | types ------------- */}
         <div className={styles.categories}>
           <button
             className={buttonClasses.inMemory}
@@ -91,8 +86,8 @@ export default function Home({ data }) {
         </div>
       </section>
 
+      {/* main section ------------- */}
       <main className={styles.main}>
-        {/* IN-MEMORY section ------- */}
         <div className={styles.mainWrapper}>
           <div className={styles.card}>
             <img src={data[index].image} alt={data[index].alt} />
@@ -106,42 +101,14 @@ export default function Home({ data }) {
         </div>
       </main>
 
-      {/* <section className={styles.hero}>
-        <div className={`${styles.left} ${active ? styles.show : ''}`}>
-          <button onClick={() => handleStoryType('in-memory')}>In Memory</button>
-          <button onClick={() => handleStoryType('missing')}>Missing</button>
-          <button onClick={() => handleStoryType('heroes')}>Heroes</button>
-          <button onClick={() => handleStoryType('our-lives-now')}>Our lives now</button>
-          <button onClick={() => handleStoryType('animals')}>Animals</button>
-          {active && 
-          <button onClick={toggleSidebar} className={styles.hideButton}>X</button>
-          }
-        </div>
-        {!active &&        
-        <SidebarButton toggleSidebar={toggleSidebar} />  
-        }
-        <div className={styles.right}>
-          <Carousel image={data[index].image} alt={data[index].alt} />
-        </div>
-      </section>
-      <section className={styles.description}>
-        <div className={styles.name}>
-          <span>
-            {data[index].name}
-          </span>
-        </div>
-        <p className={styles.dob}>
-          {data[index].dob}
-        </p>
-        <div className={styles.story}>
-           This regex match splits the story component into parts of equal length
+      {/* 
+          This regex match splits the story component into parts of equal length
           {data[index].story.match(/[\s\S]{1,280}/g).map(part => (
             <p key={part.substring(0, 16)}>
               {part}
             </p>
-          ))}
-        </div>
-      </section> */}
+          ))} 
+      */}
     </Fragment>
   );
 }

@@ -1,11 +1,13 @@
-import atoms from "../styles/atoms.module.scss"
+import atoms from "../styles/atoms.module.scss";
 
 export default function SidebarButton({ toggleSidebar, tablet }) {
-    return <button
-        className={tablet ? atoms.tabletSidebarButton : atoms.sidebarButton}
-        aria-label="show sidebar"
-        onClick={toggleSidebar}
+  return (
+    <button
+      className={tablet ? atoms.tabletSidebarButton : atoms.sidebarButton}
+      aria-label="show sidebar"
+      onClick={toggleSidebar}
     >
-        <div aria-hidden />
+      <div aria-hidden />
     </button>
+  );
 }
