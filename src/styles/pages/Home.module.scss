@@ -99,6 +99,31 @@
       }
     }
   }
+
+  .main {
+    padding: 50px 20px;
+
+    .mainWrapper {
+      .card {
+        .textContainer {
+          padding: 15px;
+          h3 {
+            color: #71797e;
+            font-size: 20px;
+            margin: 0px;
+          }
+          .dob {
+            color: #71797e;
+            font-size: 14px;
+          }
+          .story {
+            color: #71797e;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }
 
 // .hero {
